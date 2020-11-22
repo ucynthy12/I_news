@@ -1,18 +1,19 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
 
-<head>
-    <meta charset="utf-8">
-    {% if title%}
-    <title>{{title}}</title>
-    {% else %}
-    <title>I_news - Your update on the latest news</title>
-    {% endif%}
-</head>
+<!-- Content block -->
 
-<body>
 
-  
-</body>
+{% block content %}
 
-</html>
+<div class="row">
+    <div class="col-md-8">
+        <h3> TOP HEADLINES</h3>
+        <hr>
+        {{macro.displayArticle(headlines)}}
+    </div>
+    <div class="col-md-4">
+        {{macro.displaySource(news)}}
+    </div>
+</div>
+{% endblock%}
