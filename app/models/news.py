@@ -18,11 +18,10 @@ class Sources:
     Sources class to define Source Objects
     '''
  
-    def __init__(self,id,name,description,url,category,country):
+    def __init__(self,description,url,urlToImage,publishedAt):
 
-        self.id=id
-        self.name=name
+       
         self.description=description
         self.url=url
-        self.category=category
-        self.country=country
+        self.urlToImage= urlToImage
+        self.publishedAt= publishedAt
