@@ -1,0 +1,46 @@
+{% macro displayArticle(article_list) %}
+{% for article in article_list %}
+<div class="article">
+    <div class="title">
+        <a href="{{article.url}}">
+            <h2>{{article.title | truncate (100)}}</h2>
+        </a>
+    </div>
+    <p>{{article.description}}</p>
+    <img src="{{ article.urlToImage }}" width="800" height="500" alt="{{article.title}}">
+    <p>{{article.content}}</p>
+    <p>By:&nbsp;<strong>{{article.author}}</strong></p>
+    <p><small class="text-muted">Published:&nbsp;{{article.publishedAt}}</small></p>
+    <hr>
+
+</div>
+
+{% endfor%}
+
+{% endmacro %}
+{% macro displaySource(source_list) %}
+{% for source in source_list %}
+<div class="source">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <p class="card-text">{{source.description | truncate(80)}}</p>
+                            <a href="{{source.url}}">Read More</a>
+                        </div>
+                        <div class="col-sm-4 text-right">
+                            <img class="card-img" src="{{source.urlToImage}}" alt="" width='180px'>
+
+                        </div>
+                    </div>
+                </div>
+                <p><small class="text-muted">Published on :&nbsp;{{source.publishedAt}}</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endmacro %}
