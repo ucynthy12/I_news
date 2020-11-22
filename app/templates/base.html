@@ -1,0 +1,26 @@
+{% extends 'bootstrap/base.html'%}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    {% if title%}
+    <title>{{title}}</title>
+    {% else %}
+    <title>I_news - Your update on the latest news</title>
+    {% endif%}
+</head>
+
+<body>
+    <!-- Navbar block  -->
+    {% block navbar %}
+    {% include 'navbar.html' %}
+    {% endblock %}
+    <!--block content-->
+    {% block content %}
+
+    {% endblock%}
+
+</body>
+
+</html>
