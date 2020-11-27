@@ -3,14 +3,12 @@
 
 {% block content%}
 <div class="container">
+    <h3 style="color: black;font-family: 'Lora', serif;"> Found {{ articles | count }} matches </h3>
+    <hr>
     <div class="row">
-
-        <h3> Found {{ articles | count }} matches </h3>
-        <hr>
-        <ul>
-            {{ macro.displayArticle(article_list) }}
-        </ul>
-
+        <div class="col-md-3">
+            {{macro.displaySource(articles)}}
+        </div>
     </div>
 
 </div>

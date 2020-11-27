@@ -3,17 +3,75 @@
 
 <!-- Content block -->
 
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&display=swap" rel="stylesheet">
+{% endblock %}
 
 {% block content %}
 
 <div class="row">
-    <div class="col-md-8">
-        <h3> TOP HEADLINES</h3>
-        <hr>
+    <div class="col-md-9 ">
+
+        <h3 id="headlines" style="text-align: center; color: rgb(204, 9, 9);font-family: 'Lora', serif;"> TOP HEADLINES
+        </h3>
+        <hr style="width: 50%;">
         {{macro.displayArticle(headlines)}}
     </div>
-    <div class="col-md-4">
-        {{macro.displaySource(news)}}
+    <div class="col-md-3">
+        <h3
+            style="margin-top: 50px;padding: 0; text-align: center; border: 1px solid blue; border-radius: 10px;text-transform: uppercase; font-family: 'Lora', serif; font-size: 20px;color: white;background-color: blue;">
+            Your news source</h3>
+
+        <div class="row">
+            <div class="col-md-12">
+
+                {{macro.displaySource(general)}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                {{macro.displaySource(business)}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                {{macro.displaySource(technology)}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                {{macro.displaySource(entertainment)}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                {{macro.displaySource(science)}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                {{macro.displaySource(sports)}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                {{macro.displaySource(health)}}
+            </div>
+        </div>
+
+
+
     </div>
 </div>
+
+
 {% endblock%}

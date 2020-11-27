@@ -1,24 +1,28 @@
-from app import app
+
 import urllib.request,json
-from .models import news
+from .models import Article,Sources
 
-Article = news.Article
-Sources = news.Sources
-#Getting Api Key
- 
-api_key=app.config['NEWS_API_KEY']
+# Getting api key
+api_key = None
+# Getting the news base url
+base_url = None
+# Getting source url
+news_url= None
 
-#Getting the news base url
-base_url=app.config['NEWS_API_BASE_URL']
-news_url=app.config['NEWS_SOURCE_LINK']
+def configure_request(app):
+    global api_key,base_url,news_url
+    api_key=app.config['NEWS_API_KEY']
+    base_url=app.config['NEWS_API_BASE_URL']
+    news_url=app.config['NEWS_SOURCE_LINK']
  
-def get_source():
+def get_source(category):
 
     '''
     Funcion that gets the json response to our url request
     '''
-    get_source_url= news_url.format(api_key)
- 
+    get_source_url= news_url.format(category,api_key)
+
+    # print(get_source_url)
     with urllib.request.urlopen(get_source_url) as url:
 
         get_source_data = url.read()
@@ -26,9 +30,9 @@ def get_source():
  
         source_results= None
  
-        if get_source_response['articles']:
+        if get_source_response['sources']:
 
-            source_list = get_source_response['articles']
+            source_list = get_source_response['sources']
             source_results = process_source_results(source_list)
  
     return source_results
@@ -48,13 +52,14 @@ def process_source_results(source_list):
     source_results = []
   
     for source_item in source_list:
-
+        id = source_item.get('id')
+        name = source_item.get('name')
         description= source_item.get('description')
         url= source_item.get('url')
-        urlToImage=source_item.get('urlToImage')
-        publishedAt= source_item.get('publishedAt')
+        category = source_item.get('category')
+       
 
-        source_object= Sources(description,url,urlToImage,publishedAt)
+        source_object= Sources(id,name,description,url,category)
         source_results.append(source_object)
 
   
@@ -114,17 +119,18 @@ def process_results(article_list):
     return article_results
  
 
-def search_article(topic):
-
-    search_article_url = 'https://newsapi.org/v2/everything?q=bitcoin&apiKey={}'.format(api_key,topic)
+def search_article(category):
+    # search_article_results = []
+    search_article_url = 'https://newsapi.org/v2/sources?category={}&apiKey={}'.format(category,api_key)
+    print(search_article_url)
     with urllib.request.urlopen(search_article_url) as url:
         search_article_data = url.read()
         search_article_response = json.loads(search_article_data)
 
         search_article_results = None
 
-        if search_article_response['articles']:
-            search_article_list= search_article_response['articles']
+        if search_article_response['sources']:
+            search_article_list= search_article_response['sources']
             search_article_results = process_results(search_article_list)
     
     return search_article_results

@@ -1,10 +1,12 @@
-<nav class="navbar navbar-light bg-light d-flex justify-content-between">
-    <a class="navbar-brand" href="#">
-        <span>le</span> Journal
+<nav class="navbar navbar-light " style="color:rgb(243, 242, 242); background:blue">
+    <a class="navbar-brand" href="/"
+        style=" font-size: 40px;letter-spacing: 1px;text-transform: uppercase; color:white;padding-right:400px;font-family: 'Lora', serif;">
+        <span style="font-size:medium;">The</span> News
+        <span style="padding-left: 300px; font-size: medium;">{{day}}</span>
     </a>
-    <span class="navbar-text">{{day}}</span>
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" name="article_query" type="search" placeholder="Search" aria-label="Search ">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <form class="form-inline my-2 my-lg-0 " style="margin-top:8px;">
+        <input class="form-control " name="article_query" type="search" placeholder="Search your news source"
+            aria-label="Search ">
+        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
     </form>
 </nav>

@@ -1,7 +1,5 @@
 import unittest
-from models import news
-
-Article = news.Article
+from app.models import Article
 
 class ArticleTest(unittest.TestCase):
     '''
