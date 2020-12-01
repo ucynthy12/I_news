@@ -119,19 +119,19 @@ def process_results(article_list):
     return article_results
  
 
-def search_article(category):
-    # search_article_results = []
-    search_article_url = 'https://newsapi.org/v2/sources?category={}&apiKey={}'.format(category,api_key)
-    print(search_article_url)
-    with urllib.request.urlopen(search_article_url) as url:
-        search_article_data = url.read()
-        search_article_response = json.loads(search_article_data)
+# def search_article(category):
+#     # search_article_results = []
+#     search_article_url = 'https://newsapi.org/v2/sources?category={}&apiKey={}'.format(category,api_key)
+#     print(search_article_url)
+#     with urllib.request.urlopen(search_article_url) as url:
+#         search_article_data = url.read()
+#         search_article_response = json.loads(search_article_data)
 
-        search_article_results = None
+#         search_article_results = None
 
-        if search_article_response['sources']:
-            search_article_list= search_article_response['sources']
-            search_article_results = process_results(search_article_list)
+#         if search_article_response['sources']:
+#             search_article_list= search_article_response['sources']
+#             search_article_results = process_results(search_article_list)
     
-    return search_article_results
+#     return search_article_results
 

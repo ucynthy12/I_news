@@ -16,5 +16,3 @@ class SourceTest(unittest.TestCase):
         self.assertTrue(isinstance(self.new_source,Sources))
 
 
-if __name__ == '__main__':
-    unittest.main()
